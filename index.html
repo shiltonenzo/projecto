@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restaurante Sabores da Terra - Experimente o autêntico sabor da nossa terra">
+    <meta name="keywords" content="Restaurante, Comida Caseira, Sabores da Terra">
+    <title>Restaurante Sabores da Terra</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+    
+    <nav class="barnav"> 
+        <div class="logo">
+            <h1>Sabores da Terra</h1>
+        </div>
+        <div class="menu">
+            <a href="Menu.html">Menu</a>
+            <a href="Reserva.html">Reserva</a>
+            <a href="Contacto.html">Contactos</a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>        
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+
+    <header class="header">
+        <div class="cabecalho">
+            <h2>Sinta o Sabor da Nossa Terra</h2>
+            <p>No Sabores da Terra, celebramos a culinária do campo com pratos que encantam o paladar! Venha descobrir o verdadeiro sabor da terra!</p>
+        </div>
+        <div class="img-sabores">
+            <img src="imagens/logo.avif" alt="Logotipo Sabores da Terra">
+        </div>
+    </header>
+
+    <section class="services-section">
+        <h2>Sinta-se Agraciado Com Esses Serviços</h2>
+        <div class="sobre">
+            <div class="cartao">
+                <img src="imagens/pin.png" alt="Ícone de localização">
+                <h3>Sobre Nós</h3>
+                <p>Uma jornada gastronômica onde cada prato conta uma história. A nossa culinária celebra a riqueza do solo e a dedicação das mãos que preparam esses sabores.</p>
+            </div>
+            <div class="cartao">
+                <img src="imagens/livros.png" alt="Ícone de missão">
+                <h3>Missão</h3>
+                <p>Levar o autêntico sabor da nossa terra à sua mesa, valorizando o que é local e verdadeiro.</p>
+            </div>
+            
+    <div class="cartao comentarios">
+        <img src="imagens/edicao.png" alt="Ícone de depoimentos">
+        <h3>Depoimentos de Clientes</h3>
+        <textarea id="commentInput" class="comment-box" placeholder="Deixe o seu depoimento..."></textarea>
+        <button onclick="addComment()" class="comment-btn">Enviar Comentário</button>
+        <div id="commentList" class="comment-list"></div>
+    </div>
+    
+    <script>
+       function addComment() {
+    const comment = document.getElementById('commentInput').value;
+
+    if (comment.trim() === '') {
+        alert('O campo de comentário não pode estar vazio.');
+        return;
+    }
+
+    fetch('salvar_comentario.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'comentario=' + encodeURIComponent(comment),
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data);
+        document.getElementById('commentInput').value = ''; // Limpa o campo
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Falha ao enviar o comentário.');
+    });
+}
+
+    </script>
+    
+        </div>
+    </section>
+
+    <footer>
+        <div class="rodape-foot">
+            <h2>Sabores da Terra</h2>
+            <p>Onde a experiência gastronômica começa com uma boa reserva!</p>
+        </div>
+        <p>© Todos os direitos reservados.</p>
+    </footer>
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        const links = document.querySelectorAll('.menu a');
+        
+        links.forEach(link => {
+            link.classList.toggle('show');
+        });
+    });
+</script>
+</body>
+</html>

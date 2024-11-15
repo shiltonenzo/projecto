@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva - Bons Sabores</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/estabilidade.css">
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="rnav">
+        <div class="logo">
+            <h1>Bons Sabores</h1>
+        </div>
+        <div class="menu">
+            <a href="Menu.html">Menu</a>
+            <a href="Contacto.html">Contactos</a>
+            <a id="especial" href="index.html">Página Principal</a>
+        </div>
+    </nav>
+   
+    <!-- Formulário de Reserva -->
+    <div class="formulario">
+        <h2 class="titulo">Reserve a sua Mesa Conosco</h2>
+        <div class="container">
+            <form action="reservar_mesa.php" method="post" id="reservaForm">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                
+                <label for="data">Data da Reserva:</label>
+                <input type="date" id="data" name="data" required>
+                
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora" required>
+                
+                <label for="pessoas">Número de Pessoas:</label>
+                <input type="number" id="pessoas" name="pessoas" min="1" max="20" placeholder="Digite o número de pessoas" required>
+                
+                <label for="mesa">Tipo de Mesa:</label>
+                <select id="mesa" name="mesa" required>
+                    <option value="interno">Interno</option>
+                    <option value="externo">Externo</option>
+                </select>
+                
+                <button type="submit" class="btn-reservar">Reservar Mesa</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h2>Bons Sabores</h2>
+            <p><span style="color: white;"> a experiência gastronômica começa com uma boa reserva!</span></p>
+            <p>© 2024 Bons Sabores. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/interatividade.js"></script>
+</body>
+</html>
